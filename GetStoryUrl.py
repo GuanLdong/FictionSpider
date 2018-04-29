@@ -1,13 +1,15 @@
-from urllib import request
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
-def UrlGet():
+import requests
+def UrlGet(url):
     UrlCon=[]
-    html=request.urlopen("http://www.biquke.com/bq/20/20672/")
-
+    html=urlopen(url)
     bsObj=BeautifulSoup(html,'lxml')
-    list=bsObj.findAll('a')
+    list=bsObj.select('div[id="list"]')[0].findAll('a')
     for i in list:
-        UrlCon.append("http://www.biquke.com/bq/20/20672/"+str(i.get('href')))
-    # for io in range(len(UrlCon)):
-    #     print(UrlCon[io])
+        UrlCon.append("http://www.biquge.com.tw"+str(i.get('href')))
+    # for n in UrlCon:
+    #     print(n)
+    print(UrlCon[4])
     return UrlCon
+# UrlGet('http://www.biquge.com.tw/4_4029/')

@@ -1,5 +1,6 @@
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
+import requests
 def GetContent(url):
     html=urlopen(url)
     bsObj=BeautifulSoup(html,'lxml')
@@ -7,7 +8,7 @@ def GetContent(url):
     Title=bsObj.select('h1')[0]
     list=[]
     list.append(Title.text)
-    list.append(cont.text)
-    # print(list[0])
+    list.append(str(cont.getText))
+    # print(list[1])
     return list
 # GetContent('http://www.biquge.com.tw/4_4029/2349288.html')
