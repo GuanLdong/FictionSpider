@@ -3,6 +3,7 @@ from urllib.request import Request
 from test.test_urllib import urlopen
 import requests
 import socket
+import redis
 def IPTest():
     socket.setdefaulttimeout(3)
     f=open('D:\Fiction\IPGet.txt')
